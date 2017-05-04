@@ -1,0 +1,53 @@
+<% layout("userLayout") %>
+<link rel="stylesheet" type="text/css" href="/css/myUpload.css">
+<link rel="stylesheet" type="text/css" href="/css/user-basic-common.css">
+<% if(author.selfFlag==="yes"){ %>
+ <script type="text/javascript" rel="stylesheet" src="/javascript/myUpload.js"></script>
+<% } %>
+<div class="left-next">
+  <div class="col-history">
+  <% if(movies.length>0){ %>
+   <table class="col-history-table" border="0">
+    <thead>
+     <tr>
+      <td>视频<a class="keep-upload" href="/upload">继续上传</a></td>
+      <td>视频简介</td>
+      <td>上传作者</td>
+      <td>操作</td>
+     </tr>
+    </thead>
+    <tbody>
+    <% movies.forEach(function(movie){ %>
+     <tr>
+      <td class="col1-td">
+       <a href="<%= '/detail/'+movie._id %>" class="right-center-bottom-first-a">
+        <div class="tips-container" style="display:none;">
+          <span class="tips-triangle"></span>
+        </div>
+        <img src="<%= movie.titleSrc %>" /><span class="right-center-bottom-first-a-span"><%= movie.movieDuration %></span>
+       </a>
+      </td>
+      <td class="col2-td">
+       <a href="<%= '/detail/'+movie._id %>">视频名称：<%= movie.name %></a><br/>
+       <span>视频简介：<%= movie.description %></span>
+      </td>
+      <td class="col3-td">
+       <a href="<%= '/authors/'+author._id %>">上传人：<%= author.username %></a><br/>
+       <span>上传日期：<%= movie.formateDate %></span>
+      </td>
+      <td class="col4-td">
+       <% if(author&&author.selfFlag==="yes"){ %>
+       <span class="delete-sprites-common" data-movieid="<%= movie._id %>"></span>
+       <% }else{ %>
+       <span class="delete-sprites-common" data-movieid=""></span>
+       <% } %>
+      </td>
+     </tr>
+     <% }); %>
+    </tbody>
+   </table>
+   <% }else{ %>
+      <div class="col-td">暂时没有上传记录，快去上传吧,<a href="/upload">现在上传</a></div>
+   <% } %>
+  </div>
+ </div>

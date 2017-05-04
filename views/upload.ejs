@@ -1,0 +1,120 @@
+<link rel="stylesheet" type="text/css" href="/css/upload.css">
+<script type="text/javascript" rel="stylesheet" src="/javascript/upload.js"></script>
+<script type="text/javascript" rel="stylesheet" src="/javascript/uploadMovie.js"></script>
+<script type="text/javascript" rel="stylesheet" src="/javascript/jquery-form.js"></script>
+<div class="before-upload">
+ <div class="before-upload-center">
+ <p class="before-upload-text">上传视频</p>
+ <div class="before-upload-choose-movie">
+  <div class="before-upload-choose-div">
+   <div class="before-upload-choose-div-center">
+   </div>
+  </div>
+ </div>
+ </div>
+</div>
+<form class="upload-movie-form" action="/uploading" style="display:none;" enctype="multipart/form-data">
+ <input type="file" name="movie" class="upload-movie-file">
+</form>
+<div class="after-upload" style="display:none;">
+ <div class="after-upload-center">
+  <form action="/saveMovieInfo" method="post" class="save-movie-info-form" enctype="multipart/form-data">
+  <p class="after-upload-text">正在上传</p>
+  <div class="after-upload-first">
+   <div class="after-upload-first-center">
+    <p class="upload-progress">上传进度:<span></span></p>
+    <div class="upload-progress-bar">
+     <div class="upload-progress-bar-progress"></div>
+     <span class="upload-progress-percentage">0%</span>
+    </div>
+   </div>
+  </div>
+  <div class="titleImg"><img class="uploadImg" src="/images/articleHeader.png" /></div>
+  <input type="file" name="uploadFile" class="uploadFile">
+  <div class="after-upload-second">
+   <div class="after-upload-second-center">
+    <div class="after-upload-second-left">
+     <label>&nbsp;标题 <input type="text" name="movieName" class="movie-title"></label>
+     <label>&nbsp;分类 <input type="hidden" name="catogory">
+     <div class="after-upload-second-left-catogory">
+     <span class="after-upload-second-left-catogory-content"></span>
+     <span class="catogory-sprites-expand"></span>
+     <ul class="after-upload-second-left-ul" style="display:none;">
+      <li>乐享</li>
+      <li>拍客</li>
+      <li>音乐</li>
+      <li>娱乐</li>
+      <li>乐享</li>
+      <li>时尚</li>
+      <li>综艺</li>
+      <li>电影</li>
+      <li>纪录片</li>
+      <li>财经</li>
+      <li>体育</li>
+      <li>游戏</li>
+      <li>原创</li>
+      <li>广告</li>
+      <li>校园</li>
+      <li>教育</li>
+      <li>其他</li>
+     </ul>
+     </div>
+     </label>
+    </div>
+    <div class="after-upload-second-right">
+     <div class="after-upload-second-right-container"><span>简介</span><textarea class="simple-intruction" name="description"></textarea></div>
+    </div>
+    <div class="article-tags">
+      <div class="article-tags-tips-sprites"><span class="article-tags-tips">添加视频标签</span>
+      <span class="article-tags-expand"></span></div>
+      <div class="article-tags-contentDiv">
+       <!-- <input type="text" name="articleTags" class="article-tags-contentInput" placeholder="标签间请用“空格”或“逗号”隔开，最多可添加5个标签"> -->
+       <div class="article-tags-contentInputDiv">
+        <input type="hidden" name="movieTags" class="article-tags-submit" value="">
+        <em>标签间请用“空格”或“逗号”隔开，最多可添加5个标签</em>
+        <input type="text" name="realTags" maxlength="10" class="article-tags-contentInput">
+       </div>
+      </div>
+      <div class="recommend-tags">
+       <div class="recommend-tags-div"><span class="recommend-t  ags-tips">推荐标签</span></div>
+       <div class="recommend-tags-tips-div"> 
+        <ul class="recommend-tags-tips-ul">
+         <li>育儿</li>
+         <li>娱乐</li>
+         <li>星座</li>
+         <li>文化</li>
+         <li>体育</li>
+         <li>时尚</li>
+         <li>情感</li>
+         <li>汽车</li>
+         <li>美食</li>
+         <li>旅游</li>
+         <li>军事</li>
+         <li>教育</li>
+         <li>健康</li>
+         <li>股票</li>
+         <li>房产</li>
+         <li>财经</li>
+         <li>历史</li>
+         <li>收藏</li>
+         <li>时评</li>
+         <li>佛学</li>
+         <li>图片</li>
+         <li>IT</li>
+         <li>编程</li>
+         <li>学习</li>
+        </ul>
+       </div>
+      </div>
+     </div>
+   </div>
+  </div>
+  <div class="after-upload-third">
+   <div class="after-upload-third-center">保存</div>
+  </div>
+  <input type="hidden" name="movieSrc" class="movie-src">
+  <input type="hidden" name="movieDuration">
+  <video class="video-for-duration" style="display:none;" src=""></video>
+  </form>
+ </div>
+</div>

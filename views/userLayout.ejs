@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <title><%= title %></title>
+  <link rel="stylesheet" type="text/css" href="/css/layout.css">
+  <script type="text/javascript" rel="stylesheet" src="/javascript/jquery-1.12.2.js"></script>
+  <script type="text/javascript" rel="stylesheet" src="/javascript/layout.js"></script>
+  <script type="text/javascript" rel="stylesheet" src="/javascript/common.js"></script>
+ </head>
+ <body>
+  <div class="nav">
+   <div class="nav-player-flag">
+    <a href="/"><img src="/images/titleSrc.png" /><span class="nav-player-flag-text">喵喵视频</span></a>
+   </div>
+   <div class="nav-search">
+    <input type="text" name="search" class="nav-search-input" placeholder="搜索...">
+    <span class="nav-search-span">
+     <span class="nav-search-span-img"></span>
+    </span>
+   </div>
+   <div class="nav-user">
+   <% if(user){ %>
+    <a href="/upload" class="nav-userupload-movie">Upload</a>
+    <form style="display:none" class="uploadHiddenForm" action="/uploading" enctype="multipart/form-data">
+     <input type="file" name="uploadMovie" class="uploadMovie">
+    </form>
+    <a href="<%= '/authors/'+user._id %>" class="nav-user-a">
+     <img src="<%= user.imgSrc %>" class="nav-user-img" />
+    </a>
+   <% }else{ %>
+    <a href="/loginorregister/register">注册</a>
+    <a href="/loginorregister/login">登陆</a>
+   <% } %>
+   </div>
+  </div>
+  <div class="center">
+<link rel="stylesheet" type="text/css" href="/css/user.css">
+<script type="text/javascript" rel="stylesheet" src="/javascript/jquery-form.js"></script>
+<% if(author.selfFlag=="yes"){ %>
+<script type="text/javascript" rel="stylesheet" src="/javascript/user.js"></script>
+<% } %>
+<script type="text/javascript" rel="stylesheet" src="/javascript/userBasic.js"></script>
+<div class="container">
+<div class="left">
+<div class="left-top">
+ <div class="personal-information">
+  <div class="personal-information-left">
+   <img class="personal-information-img" src="<%= author.imgSrc %>" />
+  </div>
+  <div class="personal-information-right">
+   <p class="personal-information-right-username"><a href="<%= '/authors/'+author._id %>" class="personal-information-left-a"><%= author.username %></a></p>
+   <div class="personal-information-right-line0 personal-information-right-line-common">
+    <span class="personal-information-right-line0-sprites personal-information-right-line1-sprites-common"></span>
+    <div class="personal-information-right-line0-div">
+      <a class="write-information-a-common" style="display:none;">填写工作信息</a>
+      <div class="job-company-information-div write-personal-information-common" style="display:none;">
+       <input type="text" name="company" placeholder="公司或组织名称">
+       <input type="text" name="job" placeholder="你的职位">
+       <button class="write-information-double-button write-information-sure-button">确定</button>
+      </div>
+     <% if((!author.company)&&(!author.job)){ %>
+      <a class="write-information-a-common">填写工作信息</a>
+      <div class="job-company-information-div write-personal-information-common">
+       <input type="text" name="company" placeholder="公司或组织名称">
+       <input type="text" name="job" placeholder="你的职位">
+       <button class="write-information-double-button write-information-sure-button">确定</button>
+      </div>
+     <% }else{ %>
+     <span class="personal-information-company personal-information-common">
+     <% if(author.company){ %>
+        <span><%= author.company %></span>
+    <% }else{ %>
+         <a class="write-information-a-common">填写公司信息</a>
+         <div class="company-information-div write-personal-information-common">
+          <input type="text" name="company" placeholder="公司或组织名称">
+          <button class="write-information-single-button write-information-sure-button">确定</button>
+         </div>
+    <% } %>
+     </span>
+     <span class="personal-information-job personal-information-common">
+     <% if(author.job){ %>
+        <span><%= author.job %></span>
+    <% }else{ %>
+         <a class="write-information-a-common">填写职位信息</a>
+         <div class="job-information-div write-personal-information-common">
+          <input type="text" name="job" placeholder="你的职位">
+          <button class="write-information-single-button write-information-sure-button">确定</button>
+         </div>
+    <% } %>
+    </span>
+    <% } %>
+    </div>
+    <a class="personal-information-right-line-fix" style="display:none;"><span></span>修改</a>
+   </div>
+
+   <div class="personal-information-right-line1 personal-information-right-line-common">
+    <span class="personal-information-right-line1-sprites personal-information-right-line1-sprites-common"></span>
+    <div class="personal-information-right-line0-div">
+      <a class="write-information-a-common" style="display:none;">填写城市性别信息</a>
+      <div class="job-company-information-div write-personal-information-common" style="display:none;">
+       <input type="text" name="city" placeholder="城市名称">
+       <input type="radio" name="sex" value="男">男
+       <input type="radio" name="sex" value="女">女
+       <button class="write-information-double-button write-information-sure-button">确定</button>
+      </div>
+     <% if((!author.city)&&(!author.sex)){ %>
+      <a class="write-information-a-common">填写城市性别信息</a>
+      <div class="job-company-information-div write-personal-information-common">
+       <input type="text" name="city" placeholder="城市名称">
+       <input type="radio" name="sex" value="男">男
+       <input type="radio" name="sex" value="女">女
+       <button class="write-information-double-button write-information-sure-button">确定</button>
+      </div>
+     <% }else{ %>
+     <span class="personal-information-company personal-information-common">
+     <% if(author.city){ %>
+        <span><%= author.city %></span>
+    <% }else{ %>
+         <a class="write-information-a-common">填写城市信息</a>
+         <div class="company-information-div write-personal-information-common">
+          <input type="text" name="company" placeholder="城市名称">
+          <button class="write-information-single-button write-information-sure-button">确定</button>
+         </div>
+    <% } %>
+     </span>
+     <span class="personal-information-job personal-information-common">
+     <% if(author.sex){ %>
+        <span><%= author.sex %></span>
+    <% }else{ %>
+         <a class="write-information-a-common">填写性别信息</a>
+         <div class="job-information-div write-personal-information-common">
+          <input type="radio" name="sex" value="男">男
+          <input type="radio" name="sex" value="女">女
+          <button class="write-information-single-button write-information-sure-button">确定</button>
+         </div>
+    <% } %>
+    </span>
+    <% } %>
+    </div>
+    <a class="personal-information-right-line-fix" style="display:none;"><span></span>修改</a>
+   </div>
+
+   <div class="personal-information-right-line2 personal-information-right-line-common">
+    <span class="personal-information-right-line2-sprites personal-information-right-line1-sprites-common"></span>
+    <div class="personal-information-right-line0-div">
+      <a class="write-information-a-common" style="display:none;">填写学校专业信息</a>
+      <div class="job-company-information-div write-personal-information-common" style="display:none;">
+       <input type="text" name="school" placeholder="学校名称">
+       <input type="text" name="profession" placeholder="你的专业">
+       <button class="write-information-double-button write-information-sure-button">确定</button>
+      </div>
+     <% if((!author.school)&&(!author.profession)){ %>
+      <a class="write-information-a-common">填写学校专业信息</a>
+      <div class="job-company-information-div write-personal-information-common">
+       <input type="text" name="school" placeholder="学校名称">
+       <input type="text" name="profession" placeholder="你的专业">
+       <button class="write-information-double-button write-information-sure-button">确定</button>
+      </div>
+     <% }else{ %>
+     <span class="personal-information-company personal-information-common">
+     <% if(author.school){ %>
+        <span><%= author.school %></span>
+    <% }else{ %>
+         <a class="write-information-a-common">填写学校信息</a>
+         <div class="company-information-div write-personal-information-common">
+          <input type="text" name="school" placeholder="学校名称">
+          <button class="write-information-single-button write-information-sure-button">确定</button>
+         </div>
+    <% } %>
+     </span>
+     <span class="personal-information-job personal-information-common">
+     <% if(author.profession){ %>
+        <span><%= author.profession %></span>
+    <% }else{ %>
+         <a class="write-information-a-common">填写专业信息</a>
+         <div class="job-information-div write-personal-information-common">
+          <input type="text" name="profession" placeholder="你的专业">
+          <button class="write-information-single-button write-information-sure-button">确定</button>
+         </div>
+    <% } %>
+    </span>
+    <% } %>
+    </div>
+    <a class="personal-information-right-line-fix" style="display:none;"><span></span>修改</a>
+   </div>
+   
+   <div class="personal-information-right-line3 personal-information-right-line-common">
+    <span class="personal-information-right-line3-sprites personal-information-right-line1-sprites-common"></span>
+    <div class="personal-information-right-line0-div">
+     <span class="personal-information-company personal-information-common">
+     <% if(author.expert){ %>
+        <span><%= author.expert %></span>
+    <% }else{ %>
+         <a class="write-information-a-common">填写优势信息</a>
+         <div class="company-information-div write-personal-information-common write-personal-information-common-special">
+          <textarea name="expert" placeholder="你的优势"></textarea>
+          <button class="write-information-single-button write-information-sure-button">确定</button>
+         </div>
+    <% } %>
+         <a class="write-information-a-common" style="display:none;">填写优势信息</a>
+         <div class="company-information-div write-personal-information-common write-personal-information-common-special" style="display:none;">
+          <textarea name="expert" placeholder="你的优势"></textarea>
+          <button class="write-information-single-button write-information-sure-button">确定</button>
+         </div>
+     </span>
+    </div>
+    <a class="personal-information-right-line-fix" style="display:none;"><span></span>修改</a>
+   </div>
+
+   <div class="personal-information-right-line4 personal-information-right-line-common">
+    <span class="personal-information-right-line4-sprites personal-information-right-line1-sprites-common"></span>
+    <div class="personal-information-right-line0-div">
+     <span class="personal-information-company personal-information-common">
+     <% if(author.summary){ %>
+        <span><%= author.summary %></span>
+    <% }else{ %>
+         <a class="write-information-a-common">填写座右铭信息</a>
+         <div class="company-information-div write-personal-information-common write-personal-information-common-special">
+          <textarea name="expert" placeholder="你的座右铭"></textarea>
+          <button class="write-information-single-button write-information-sure-button">确定</button>
+         </div>
+    <% } %>
+         <a class="write-information-a-common" style="display:none;">填写座右铭信息</a>
+         <div class="company-information-div write-personal-information-common write-personal-information-common-special" style="display:none;">
+          <textarea name="expert" placeholder="你的座右铭"></textarea>
+          <button class="write-information-single-button write-information-sure-button">确定</button>
+         </div>
+     </span>
+    </div>
+    <a class="personal-information-right-line-fix" style="display:none;"><span></span>修改</a>
+   </div>
+
+  </div>
+ </div>
+ </div>
+ </div>
+ 
+<div class="right">
+ <div class="right-center">
+  <ul>
+   <li><a href="<%= '/authors/history/'+author._id %>"><span class="history-sprites"></span><span class="history-text">播放记录</span></a></li>
+   <li><a href="<%= '/authors/collection/'+author._id %>"><span class="collection-sprites"></span><span class="collection-text">我的收藏</span></a></li>
+   <li><a href="<%= '/authors/attention/'+author._id %>"><span class="attention-sprites"></span><span class="attention-text">我的关注</span></a></li>
+   <li><a href="<%= '/authors/upload/'+author._id %>"><span class="upload-sprites"></span><span class="upload-text">我的上传</span></a></li>
+  </ul>
+ </div>
+</div>
+<%- body -%>
+<form enctype="multipart/form-data" method="POST" class="imgChangeForm" style="display:none;">
+ <input type="file" name="imgChange" class="imgChange">
+</form>
+</div>
+  </div>
+  <div class="footer">
+   <p>Copyright ©2016 mbj Corporation, All Rights Reserved</p>
+  </div>
+ </body>
+</html>

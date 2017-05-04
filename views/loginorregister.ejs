@@ -1,0 +1,64 @@
+<!-- 14:26 -->
+<% layout("emptyLayout") %>
+<!DOCTYPE html>
+<html>
+ <head>
+  <link rel="stylesheet" type="text/css" href="/css/register.css">
+  <script type="text/javascript" rel="stylesheet" src="/javascript/jquery-1.12.2.js"></script>
+  <script type="text/javascript" rel="stylesheet" src="/javascript/register.js"></script>
+ </head>
+ <body>
+  <div class="header">
+   <div class="header-left">
+   </div>
+   <div class="header-right">
+    喵喵视频,让世界呈现在你眼前
+   </div>
+  </div>
+  <div class="middle">
+   <form action="/registerSuccess" method="post" class="register-form" data-flag="<%= flag %>">
+   <div class="middler-center">
+    <div class="tips-div">
+     <% if(flag==1){ %>
+     <p class="middler-center-text"><a href="/loginorregister/login">登陆</a></p>
+     <p class="middle-center-login"><a href="/loginorregister/register">注册</a></p>
+     <% }else{ %>
+     <p class="middler-center-text"><a href="/loginorregister/register">注册</a></p>
+     <p class="middle-center-login"><a href="/loginorregister/login">登陆</a></p>
+     <% } %>
+    </div>
+    <div class="username-div common-div">
+     <span class="username-titleImg"></span> 
+     <input type="text" name="username" class="username" placeholder="用户名" autocomplete="off">
+     <span class="username-tips"></span>
+    </div>
+    <div class="password-div common-div">
+     <span class="password-titleImg"></span>
+     <input type="password" name="password" placeholder="密码">
+     <span class="password-tips"></span>
+    </div>
+    <% if(flag==0){ %>
+    <div class="email-div common-div">
+     <span class="email-titleImg"></span>
+     <input type="text" name="email" placeholder="邮箱">
+     <span class="email-tips"></span>
+    </div>
+    <div class="register-div common-div">注&nbsp;册</div>
+    <% }else{ %>
+    <div class="register-div common-div">登&nbsp;陆</div>
+    <% } %>
+   </div>
+   </form>
+  </div>
+  <script type="text/javascript">
+   $(function(){
+       var flag=$("form").data("flag");
+       if(flag=="1"){
+         $("form").attr("action","/loginSuccess");
+       }else{
+         $("form").attr("action","/registerSuccess");
+       }
+   });
+  </script>
+ </body>
+</html>

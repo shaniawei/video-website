@@ -1,0 +1,137 @@
+<link rel="stylesheet" type="text/css" href="/css/detail.css">
+<link rel="stylesheet" type="text/css" href="/css/play.css" >
+<script type="text/javascript" rel="stylesheet" src="/javascript/detail.js"></script>
+<script type="text/javascript" rel="stylesheet" src="/javascript/play.js"></script>
+<div class="container" data-userid="<%= user._id %>" data-movieid="<%= movie._id %>">
+<div class="left">
+ <div class="left-first">
+  <div id="main">
+   <video id="video" poster="<%= movie.titleSrc %>">
+    <source src="<%= movie.movieSrc %>">
+   </video>
+   <div id="bigBtn">
+    <span></span>
+   </div>
+   <div id="progress">
+    <div id="currentTime">00:00:00</div>
+    <div id="progressBar">
+     <div id="playedProgressBar"></div>
+     <span id="progressBarBlock"></span>
+    </div>
+    <div id="durationTime">00:00:00</div>
+   </div>
+   <div id="buttonTools">
+    <div id="smallBtn"><img src="/images/stop.jpg" alt="停止" title="停止" /></div>
+    <div id="voice">
+     <div id="voicePic"><img src="/images/voice.jpg" title="音量" alt="音量" /></div>
+     <div id="voiceLine">
+      <span id="voiceLineBlock"></span>
+     </div>
+    </div>
+    <div id="myStyle">我的播放器我做主</div>
+    <div id="fullScreen"><img src="/images/full.png" alt="全屏" title="全屏"></div>
+    </div>
+   </div>
+ </div>
+ <div class="left-second">
+  <p class="movie-description"><%= movie.description %></p>
+  <div class="movie-uploader">
+   <a href="<%= '/authors/'+movie.uploadUser._id %>" class="movie-uploader-a">
+    <img src="<%= movie.uploadUser.imgSrc %>" />
+   </a>
+   <div class="movie-subscribe">
+    <a href="<%= '/authors/'+movie.uploadUser._id %>" class="movie-uploader-intruction"><%= movie.uploadUser.username %></a>
+    <div class="movie-subscribe-div">
+     <span class="subscribe-span">订阅</span>
+     <span class="subscribe-number"><%= movie.visitedNum %></span>
+    </div>
+   </div>
+   </div>
+   <div class="movie-visitedNum">
+    <span class="movie-visitedNum-span"><%= movie.visitedNum %>次观看</span>
+   </div>
+   <div class="movie-basic">
+    <div class="movie-basic-ul">
+     <div class="movie-basic-left"><%= movie.formateDate %></div>
+     <div class="movie-basic-left"><%= movie.mark %></div>
+     <div class="movie-basic-right"><span class="current-opposeNum-sprites"></span><%= movie.opposeNum %></div>
+     <div class="movie-basic-right"><span class="current-praiseNum-sprites"></span><%= movie.praiseNum %>
+     </div>
+    </div>
+   </div>
+  </div>
+  <div class="left-third">
+   <div class="left-third-center">
+    <div class="recommend-first">
+     <p class="recommend-first-text">评论(0)</p>
+     <a href="<%= 'authors'+movie.uploadUser._id %>" class="current-user"><img src="<%= movie.uploadUser.imgSrc %>" /></a>
+     <textarea class="recommend-first-content"></textarea>
+     <div class="recommend-first-button">
+      <button>发表</button>
+      <button>取消</button>
+     </div>
+    </div>
+    <div class="recommend-second">
+     <p class="recommend-second-text">所有评论</p>
+     <div class="recommend-second-real">
+      <div class="recommend-second-real-left">
+       <a href="" class="current-commentor"><img src="" /></a>
+      </div>
+      <div class="recommend-second-real-right">
+       <p class="first-line">
+        <a href="" class="current-commentor">
+         <img src="" />
+        </a>
+        <span></span>
+       </p>
+       <p class="second-line"></p>
+       <div class="third-line">
+        <span class="comment-replay">
+
+        </span>
+        <span class="comment-praise"></span>
+        <span class="comment-praise-num"></span>
+        <span class="comment-oppose"></span>
+        <span class="comment-praise-num"></span>
+       </div>
+      </div>
+     </div>
+    </div>
+   </div>
+  </div>
+ </div>
+<div class="right">
+ <div class="right-center">
+  <p class="right-center-text">自动播放</p>
+  <% if(recommendMovie.length>0) { 
+      recommendMovie.forEach(function(m){
+  %>
+  <div class="next-play">
+   <div class="next-play-col1">
+     <a href="<%= '/detail/'+m._id %>" class="right-center-bottom-first-a">
+     <div class="tips-container" style="display:none;">
+       <span class="tips-triangle">
+       </span>
+     </div>
+     <img class="right-center-bottom-first-img" src="<%= m.titleSrc %>" />
+     <span class="right-center-bottom-first-a-span"><%= m.movieDuration %></span>
+     </a>
+   </div>
+   <div class="next-play-col2">
+    <a href="<%= '/detail/'+m._id %>" class="right-center-bottom-second-a"><%= m.description %></a>
+     <a href="<%= '/authors/'+m.uploadUser._id %>" class="right-center-bottom-third-span"><%= m.uploadUser.username %>
+     </a>
+     <p class="right-center-bottom-forth-span"><%= m.visitedNum %>次观看，<%= m.formateDate %></p>
+     <div class="right-center-bottom-forth-count">
+      <span class="praiseNum-sprites"></span><%= m.praiseNum %>
+      <span class="opposeNum-sprites"></span><%= m.opposeNum %>
+     </div>
+     <p class="right-center-bottom-forth-mark"><%= m.mark %></p>
+   </div>
+  </div>
+  <% });}else{ %>
+   <p>暂时没有推荐视频</p>
+  <% } %>
+ </div>
+</div>
+</div>

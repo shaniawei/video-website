@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <title><%= title %></title>
+  <link rel="stylesheet" type="text/css" href="/css/layout.css">
+  <script type="text/javascript" rel="stylesheet" src="/javascript/jquery-1.12.2.js"></script>
+  <script type="text/javascript" rel="stylesheet" src="/javascript/layout.js"></script>
+  <script type="text/javascript" rel="stylesheet" src="/javascript/common.js"></script>
+ </head>
+ <body>
+  <div class="nav">
+   <div class="nav-player-flag">
+    <a href="/"><img src="/images/titleSrc.png" /><span class="nav-player-flag-text">喵喵视频</span></a>
+   </div>
+   <div class="nav-search">
+    <input type="text" name="search" class="nav-search-input" placeholder="搜索...">
+    <span class="nav-search-span">
+     <span class="nav-search-span-img"></span>
+    </span>
+   </div>
+   <div class="nav-user">
+   <% if(user){ %>
+    <a href="/upload" class="nav-userupload-movie">Upload</a>
+    <form style="display:none" class="uploadHiddenForm" action="/uploading" enctype="multipart/form-data">
+     <input type="file" name="uploadMovie" class="uploadMovie">
+    </form>
+    <a href="<%= '/authors/'+user._id %>" class="nav-user-a">
+     <img src="<%= user.imgSrc %>" class="nav-user-img" />
+    </a>
+   <% }else{ %>
+    <a href="/loginorregister/register">注册</a>
+    <a href="/loginorregister/login">登陆</a>
+   <% } %>
+   </div>
+  </div>
+  <div class="center">
+   <%- body -%>
+  </div>
+  <div class="footer">
+   <p>Copyright ©2016 mbj Corporation, All Rights Reserved</p>
+  </div>
+ </body>
+</html>

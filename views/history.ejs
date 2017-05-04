@@ -1,0 +1,28 @@
+<% layout("userLayout") %>
+<link rel="stylesheet" type="text/css" href="/css/history.css">
+<div class="left-next">
+  <div class="col-history">
+  <% if(historyMovie&&historyMovie.length>0){ %>
+   <table class="col-history-table" border="0">
+    <thead>
+     <tr>
+      <td>视频</td>
+      <td>观看时间</td>
+      <td>操作</td>
+     </tr>
+    </thead>
+    <tbody>
+    <% historyMovie.forEach(function(hmovie){ %>
+     <tr>
+      <td class="col1-td"><a href="<%= '/detail/'+hmovie.movieid._id %>"><%= hmovie.movieid.name %></a></td>
+      <td class="col2-td"><span><%= hmovie.formateDate %></span></td>
+      <td class="col3-td"><a href="<%= '/detail/'+hmovie.movieid._id %>">继续观看</a><span class="delete-sprites-common"></span></td>
+     </tr>
+    <% }); %>
+    </tbody>
+   </table>
+   <% }else{ %>
+    <div class="col-td">暂时没有播放记录，快去看视频吧,<a href="/">现在观看</a></div>
+   <% } %>
+  </div>
+ </div>

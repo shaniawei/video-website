@@ -1,0 +1,68 @@
+.left-next{
+	width: 100%;
+	min-width: 632px;
+	min-height: 300px;
+	height: auto;
+	box-sizing: border-box;
+	padding-right: 283px;
+	clear: both;
+}
+.col-history{
+	width: 100%;
+	padding:10px 20px;
+	box-sizing: border-box;
+	border:1px solid #DDDDDD;
+	border-radius: 4px;
+	min-height: 150px;
+}
+.col-history-table{
+    width: 100%;
+}
+.col-history-table tr{
+	width: 100%;
+}
+.col-history-table tr td{
+	height: 50px;
+}
+.col-history-table tr td a,.col-history-table tr td span{
+	font-size: 14px;
+	color: #333;
+}
+.col-history-table tr td a:hover{
+    color:#48B6F6
+}
+.col-history-table tbody tr:hover{
+	background-color: #E6F8EE;
+}
+.col1-td{
+	width:40%;
+}
+.col2-td{
+	width: 20%;
+}
+.col3-td{
+	width:40%;
+}
+.delete-sprites-common{
+    width: 20px;
+	height: 18px;
+	display: inline-block;
+	vertical-align: middle;
+	margin-left: 10px;
+	cursor: pointer;
+}
+.delete-sprites{
+	background:url("/images/user-center-sprites.png") -70px -303px no-repeat;
+}
+.col-td{
+	width: 100%;
+	text-align: center;
+	color: #949494;
+	font-size: 16px;
+	margin-top: 60px;
+	height: 100%;
+}
+.col-td a{
+	font-size: 18px;
+	color:#44A3FF;
+}

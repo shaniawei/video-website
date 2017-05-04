@@ -1,0 +1,30 @@
+<% layout("userLayout") %>
+<link rel="stylesheet" type="text/css" href="/css/recommend.css">
+<div class="right-center-bottom next-left">
+ <div class="right-center-bottom-align-center next-left-center">
+  <div class="right-center-bottom-recommend">
+   <p class="right-center-bottom-recommend-text"><a href="">推荐视频</a></p>
+   <div class="right-center-bottom-block-common">
+   <ul>
+    <% if(movies){ 
+        movies.forEach(function(movie){
+    %>
+    <li>
+     <a href="<%= '/detail/'+movie._id %>" class="right-center-bottom-first-a">
+     <div class="tips-container" style="display:none;">
+       <span class="tips-triangle">
+       </span>
+     </div>
+     <img class="right-center-bottom-first-img" src="<%= movie.titleSrc %>" /><span class="right-center-bottom-first-a-span"><%= movie.movieDuration %></span>
+     </a>
+     <a href="<%= '/detail/'+movie._id %>" class="right-center-bottom-second-a"><%= movie.description %></a>
+     <a href="<%= '/authors/'+movie.uploadUser._id %>" class="right-center-bottom-third-span"><%= movie.uploadUser.username %></a>
+     <span class="right-center-bottom-forth-span"><%= movie.visitedNum %>次观看，<%= movie.formateDate %></span>
+    </li>
+    <% });} %>
+   </ul>
+   </div>
+   <p class="right-center-bottom-recommend-more"><a href="">更多</a></p>
+  </div>
+</div>
+</div>

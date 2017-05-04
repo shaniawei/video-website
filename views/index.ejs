@@ -1,0 +1,94 @@
+<link rel="stylesheet" type="text/css" href="/css/index.css">
+<script type="text/javascript" rel="stylesheet" src="/javascript/index.js"></script>
+<div class="left">
+ <div class="left-center">
+  <div class="left-center-first left-center-common">
+   <ul>
+    <li><span class="left-center-first-titleImg-shouye left-center-first-titleImg-common"></span><a href="">首页</a></li>
+    <li><span class="left-center-first-titleImg-channel left-center-first-titleImg-common"></span><a href="">我的频道</a></li>
+    <li><span class="left-center-first-titleImg-popular left-center-first-titleImg-common"></span><a href="">时下流行</a></li>
+    <li><span class="left-center-first-titleImg-history left-center-first-titleImg-common"></span><a href="">历史记录</a></li>
+   </ul>
+  </div>
+  <p class="left-center-subscribe">订阅内容</p>
+  <div class="left-center-second left-center-common">
+   <p class="left-center-channel">添加频道</p>
+   <ul> 
+    <li><span class="left-center-second-titleImg-popular"></span><a href="">网站热门</a></li>
+    <li><span class="left-center-second-titleImg-music"></span><a href="">音乐</a></li>
+    <li><span class="left-center-second-titleImg-sport"></span><a href="">体育</a></li>
+    <li><span class="left-center-second-titleImg-game"></span><a href="">游戏</a></li>
+   </ul>
+  </div>
+ </div>
+</div>
+<div class="right">
+ <div class="right-center">
+  <div class="right-center-top">
+  <div class="right-center-top-align-center">
+   <div class="right-center-top-first">
+    <a href="">首页</a>
+   </div>
+   <div class="right-center-top-second">
+    <a href="">时下流行</a>
+   </div> 
+   <div class="right-center-top-third">
+    <a href="">订阅内容</a>
+   </div> 
+   </div>
+  </div>
+  <div class="right-center-second">
+  <div class="right-center-animation">
+   <div class="right-center-animation-align-center">
+   <!--这里用放动画-->
+    <img src="/videoImages/ads.png" />
+   </div>
+  </div>
+  <div class="right-center-bottom">
+  <div class="right-center-bottom-align-center">
+   <!-- recommend start --> 
+   <div class="right-center-bottom-recommend">
+   <p class="right-center-bottom-recommend-text"><a href="">推荐视频</a></p>
+   <div class="right-center-bottom-block-common">
+   <ul>
+    <% if(movies){ 
+        movies.forEach(function(movie){
+    %>
+    <li>
+     <a href="<%= '/detail/'+movie._id %>" class="right-center-bottom-first-a">
+     <div class="tips-container" style="display:none;">
+       <span class="tips-triangle">
+       </span>
+     </div>
+     <img class="right-center-bottom-first-img" src="<%= movie.titleSrc %>" /><span class="right-center-bottom-first-a-span"><%= movie.movieDuration %></span>
+     </a>
+     <a href="<%= '/detail/'+movie._id %>" class="right-center-bottom-second-a"><%= movie.description %></a>
+     <a href="<%= '/authors/'+movie.uploadUser._id %>" class="right-center-bottom-third-span"><%= movie.uploadUser.username %></a>
+     <span class="right-center-bottom-forth-span"><%= movie.visitedNum %>次观看，<%= movie.formateDate %></span>
+    </li>
+    <% });} %>
+   </ul>
+   </div>
+   <p class="right-center-bottom-recommend-more"><a href="">更多</a></p>
+   </div>
+   <!--recommend end-->
+   <!-- newest movie start -->
+   <div class="right-center-bottom-newest">
+    
+   </div>
+   <!-- newest movie end -->
+   <!-- history movie start -->
+   <div class="right-center-bottom-history">
+    
+   </div>
+   <!-- history movie end -->
+   <!-- action movie start -->
+   <div class="right-center-bottom-action">
+    
+   </div>
+   <!-- action movie end -->
+   </div>
+  </div>
+  </div>
+ </div>
+</div>
