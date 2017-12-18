@@ -6,10 +6,11 @@
 
 2.右键选择git bash here或者进入CMD控制台，切换到项目根目录下 如图：
 
-
+ ![Image text](https://github.com/shaniawei/images/blob/master/git1.jpg)
 
 3.执行 npm install 安装项目依赖，如图：
 
-
+ ![Image text](https://github.com/shaniawei/images/blob/master/2.jpg)
 
 4.执行node app 服务启动 浏览器输入 127.0.0.1：1337即可访问网站
+ ![Image text](https://github.com/shaniawei/images/blob/master/3.jpg)
