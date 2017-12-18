@@ -2,7 +2,7 @@
 
 1.未安装***node  git  mongoDB***的请先安装。node以及git直接从官网下载默认安装即可。
 
-​     ***mongoDB***安装请参考链接https://zhuanlan.zhihu.com/p/24926260。
+​     ***mongoDB***安装请参考链接https://zhuanlan.zhihu.com/p/24926260
 
 2.右键选择git bash here或者进入CMD控制台，切换到项目根目录下 如图：
 
